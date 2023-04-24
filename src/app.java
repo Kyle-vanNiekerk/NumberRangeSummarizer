@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import numberrangesummarizer.ImplamentedSummarizer;
+import numberrangesummarizer.ImplementedSummarizer;
 import data.FileReader;
 
 public class app {
@@ -12,7 +12,7 @@ public class app {
          */
 
         // Debugging:
-        ImplamentedSummarizer rf = new ImplamentedSummarizer();
+        ImplementedSummarizer rf = new ImplementedSummarizer();
         FileReader reader = new FileReader();
 
         // Read From Specified File

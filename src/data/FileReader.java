@@ -3,6 +3,10 @@ package data;
 import java.io.File;
 import java.util.Scanner;
 
+/*
+ * @author Kyle van Niekerk
+*/
+
 public class FileReader {
     // Open a specified text file in a specified directory to read the input from
     // This is easier than entering input into a terminal and neater than hardcoding it
