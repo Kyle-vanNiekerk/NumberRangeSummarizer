@@ -9,6 +9,12 @@ public class app {
          *  app.java will read the series of numbers from the specified input file
          *  and summarize them in a comma delimited list, and group them by range
          *  when they are sequential.
+         *
+         * ToDo:
+         *  Input validation
+         *  More unit tests
+         *  readme.md
+         *
          */
 
         // Debugging:
