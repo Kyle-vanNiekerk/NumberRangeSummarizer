@@ -6,8 +6,48 @@ import java.util.ArrayList;
 
 public class ImplementedSummarizer implements NumberRangeSummarizer {
 
+    // Validate user input
+    public boolean validateInput(String input){
+        boolean bValid = true;
+        if (input == "")
+        {
+            bValid = false;
+            System.out.println("Please enter a comma delimited series of numbers");
+        }
+        for (int i = 0; i < input.length(); i++) {
+            // Make sure that input contains only numbers, commas, and spaces
+            char myChar = input.charAt(i);
+            if (!Character.isDigit(myChar))
+            {
+                bValid = false;
+                if (myChar == ',' || myChar == ' ')
+                {
+                    bValid = true;
+                }
+                else{
+                    bValid = false;
+                    System.out.println("Please ensure that the input contains only numbers, commas, and spaces");
+                    break;
+                }
+                // Null values in series or ",," can cause issues, if input contains any it is invalid
+                if (input.contains(",,"))
+                {
+                    bValid = false;
+                    System.out.println("The series cannot contain any NULL values");
+                    break;
+                }
+            }
+        }
+        return bValid;
+    }
+
     // Splits a given string by delimiter ","
     public String [] splitByComma(String series){
+        boolean seriesValidated = validateInput(series);
+        if (seriesValidated == false)
+        {
+            System.exit(0); // Stops execution to avoid errors
+        }
         return series.split(",");
     }
 
@@ -16,8 +56,10 @@ public class ImplementedSummarizer implements NumberRangeSummarizer {
         ArrayList<Integer> result = new ArrayList<>();
         String[] series = splitByComma(input);
 
+        // Removes any spaces from the input, then adding them to a Collection
+        // Errors will not occur when converting to int, allows different input formats when none are specified for otherwise valid input
         for (String s : series) {
-            result.add(Integer.parseInt(s));
+            result.add(Integer.parseInt(s.replaceAll(" ", "")));
         }
 
         return result;
